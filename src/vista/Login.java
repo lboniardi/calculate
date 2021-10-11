@@ -152,7 +152,7 @@ public class Login extends javax.swing.JFrame {
           return;
        }    
         
-        Vista4 home = new Vista4();
+        IngresoGastos home = new IngresoGastos();
        home.setVisible(true);
        this.setVisible(false);
        

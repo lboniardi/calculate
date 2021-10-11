@@ -101,6 +101,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnInsertarGastos">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Insertar Gasto"/>
       </Properties>
       <Events>
@@ -109,6 +112,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnLogout">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
       <Events>
@@ -117,6 +123,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHome">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Home"/>
       </Properties>
       <Events>
@@ -125,8 +134,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnInfoGastos">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Info Gastos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInfoGastosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
     </Component>

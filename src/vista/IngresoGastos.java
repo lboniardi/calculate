@@ -5,18 +5,13 @@
  */
 package vista;
 
-/**
- *
- * @author leonor.perez
- */
-public class Vista4 extends javax.swing.JFrame {
+public class IngresoGastos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Vista4
-     */
-    public Vista4() {
+   
+    public IngresoGastos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Calculate (beta)");
     }
 
     /**
@@ -43,6 +38,7 @@ public class Vista4 extends javax.swing.JFrame {
 
         jTextField5.setText("    Valor");
 
+        btnInsertarGastos.setBackground(new java.awt.Color(153, 51, 255));
         btnInsertarGastos.setText("Insertar Gasto");
         btnInsertarGastos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +46,7 @@ public class Vista4 extends javax.swing.JFrame {
             }
         });
 
+        btnLogout.setBackground(new java.awt.Color(153, 51, 255));
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +54,7 @@ public class Vista4 extends javax.swing.JFrame {
             }
         });
 
+        btnHome.setBackground(new java.awt.Color(153, 51, 255));
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +62,13 @@ public class Vista4 extends javax.swing.JFrame {
             }
         });
 
+        btnInfoGastos.setBackground(new java.awt.Color(153, 51, 255));
         btnInfoGastos.setText("Info Gastos");
+        btnInfoGastos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoGastosActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel2.setText("INGRESO DE GASTOS");
@@ -142,6 +146,12 @@ public class Vista4 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    private void btnInfoGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoGastosActionPerformed
+       InformeGastos informe = new InformeGastos();
+       informe.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_btnInfoGastosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -159,14 +169,18 @@ public class Vista4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IngresoGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IngresoGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IngresoGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IngresoGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -175,7 +189,7 @@ public class Vista4 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vista4().setVisible(true);
+                new IngresoGastos().setVisible(true);
             }
         });
     }
