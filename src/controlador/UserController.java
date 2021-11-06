@@ -7,6 +7,7 @@ import logic.UserLogic;
 import modelo.User;
 import vista.Login;
 import vista.Registrarse;
+import vista.Home;
 
 public class UserController implements ActionListener{
     
@@ -14,7 +15,7 @@ public class UserController implements ActionListener{
     private User userModel;
     private Registrarse registrarseVista;
     
-    public UserController( User userModel, UserLogic userLogic, Registrarse registrarseVista){
+    public UserController( User userModel, UserLogic userLogic, Home homeVista){
         this.userModel=userModel;
         this.registrarseVista=registrarseVista;
         this.userLogic=userLogic;
