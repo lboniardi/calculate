@@ -144,6 +144,7 @@ public class Home extends javax.swing.JFrame {
     */
     
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+            System.out.println("paso x aca");
             Login login = new Login();
             login.setVisible(true);
             this.setVisible(false);
@@ -153,6 +154,7 @@ public class Home extends javax.swing.JFrame {
         Singin registro = new Singin();
         registro.setVisible(true);
         this.setVisible(false);
+      
     }//GEN-LAST:event_btnregistrarseActionPerformed
 
     private void btnregistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnregistrarseMouseEntered
