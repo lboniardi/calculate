@@ -98,17 +98,17 @@ public class InformeGastos extends javax.swing.JFrame {
         volver.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
-
+/*
     public static void main(String args[]) {
 
-        /* Create and display the form */
+         Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InformeGastos().setVisible(true);
             }
         });
     }
-
+ */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> ListaDeGastos;
     private javax.swing.JButton btnVolver;
