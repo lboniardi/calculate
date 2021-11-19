@@ -5,39 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import controlador.UsuarioControlador;
+import java.awt.event.ActionEvent;
+import static sun.jvm.hotspot.HelloWorld.e;
 
 public class Singin extends javax.swing.JFrame {
 
-    public static final String URL = "jdbc:mysql://localhost:3306/calculate";
-    public static final String USERNAME = "root";
-    public static final String PASSWORD = "";
-    PreparedStatement ps;
-    ResultSet rs;
+   // private controlador UsuarioControlador;
 
-  
-    public static Connection getConection(){
-        Connection con = null;
-
-        try{        
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println(URL);
-            System.out.println(USERNAME);
-            System.out.println(PASSWORD);
-            con = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("con: " + con);
-            JOptionPane.showMessageDialog(null, "Conexión exitosa");
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return con ;
-    }
-
-    private void limpiarInputs() {
-        txtNombre.setText(null);
-        txtApellido.setText(null);
-        txtUsuario.setText(null);
-        txtClave.setText(null);
-    }
 
     public Singin() {
         initComponents();
@@ -61,20 +36,30 @@ public class Singin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
 
-        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
 
-        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtApellido.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoActionPerformed(evt);
+            }
+        });
 
-        txtClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtClave.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClaveActionPerformed(evt);
@@ -108,9 +93,28 @@ public class Singin extends javax.swing.JFrame {
 
         jLabel6.setText("Contraseña");
 
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setText("Editar");
+
+        btnEliminar.setText("Eliminar");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -118,15 +122,6 @@ public class Singin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                .addComponent(jLabel1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -146,6 +141,29 @@ public class Singin extends javax.swing.JFrame {
                         .addGap(150, 150, 150)
                         .addComponent(btnVolver)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(btnRegistrarse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLimpiar)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditar)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 156, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +175,11 @@ public class Singin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(85, 85, 85)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -173,9 +195,13 @@ public class Singin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(55, 55, 55)
-                .addComponent(btnRegistrarse)
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarse)
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar))
+                .addGap(20, 20, 20)
                 .addComponent(btnVolver)
                 .addGap(48, 48, 48))
         );
@@ -193,33 +219,9 @@ public class Singin extends javax.swing.JFrame {
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         IngresoGastos home = new IngresoGastos();
-        home.setVisible(true);
-        this.setVisible(false);
-        Connection con = null;
-        try {
-            con = getConection();
-            ps = con.prepareStatement("INSERT INTO usuarios (nombre, apellido,usuario, contraseña) VALUES(?,?,?,?)");
-            ps.setString(1, txtNombre.getText());
-            ps.setString(2, txtApellido.getText());
-            ps.setString(3, txtUsuario.getText());
-            ps.setString(4, txtClave.getText());
-
-           int res = ps.executeUpdate();
-           
-            if (res > 0) {
-                JOptionPane.showMessageDialog(null, "Usuario Guardado");
-                limpiarInputs();
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al guardar usuario");
-                limpiarInputs();
-            }
-            con.close();
-
-        } catch (Exception e) {
-            System.err.println(e);
-
-        }
+       //home.setVisible(true);
+        //this.setVisible(false);
+       
 
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
@@ -233,8 +235,24 @@ public class Singin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        System.out.print("click !");
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrarse;
+    public javax.swing.JButton btnBuscar;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btnRegistrarse;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -242,9 +260,10 @@ public class Singin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtClave;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JTextField txtApellido;
+    public javax.swing.JTextField txtClave;
+    public javax.swing.JTextField txtId;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

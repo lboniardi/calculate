@@ -1,4 +1,6 @@
 package vista;
+
+import controlador.UsuarioControlador;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -6,11 +8,12 @@ import java.net.URL;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+import modelo.Consultas;
+import modelo.Usuario;
 
 public class Home extends javax.swing.JFrame {
-  
-      public Home() {        
+
+    public Home() {
         this.setContentPane(new ImagenFondo());
         initComponents();
         this.setLocationRelativeTo(null);
@@ -23,8 +26,8 @@ public class Home extends javax.swing.JFrame {
                 new Home().setVisible(true);
             }
         });
-    }      
-         
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -102,20 +105,24 @@ public class Home extends javax.swing.JFrame {
             registro.setVisible(true);
             this.setVisible(false);
     }   
-    */
-    
+     */
+
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-            System.out.println("paso x aca");
-            Login login = new Login();
-            login.setVisible(true);
-            this.setVisible(false);
+
+        Login login = new Login();
+        login.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarseActionPerformed
-        Singin registro = new Singin();
-        registro.setVisible(true);
+        Usuario modelo = new Usuario();
+        Consultas modeloConsultas = new Consultas();
+        Singin registrarse = new Singin();
+        UsuarioControlador controlador = new UsuarioControlador(modelo, modeloConsultas, registrarse);
+        controlador.iniciar();
+        registrarse.setVisible(true);
         this.setVisible(false);
-      
+
     }//GEN-LAST:event_btnregistrarseActionPerformed
 
     private void btnregistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnregistrarseMouseEntered
@@ -131,7 +138,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginMouseEntered
 
     private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
-       btnLogin.setBackground(new java.awt.Color(153, 51, 255));
+        btnLogin.setBackground(new java.awt.Color(153, 51, 255));
     }//GEN-LAST:event_btnLoginMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -139,16 +146,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton btnregistrarse;
     // End of variables declaration//GEN-END:variables
 
+    public class ImagenFondo extends JPanel {
 
-    public class ImagenFondo extends JPanel{
         @Override
-        public void paint(Graphics g){
-        ImageIcon imagen = new ImageIcon(getClass().getResource("/imagenes/calculador.png"));
-        g.drawImage(imagen.getImage(),0,0,getWidth(),getHeight(),this);
-        setOpaque(false);
-        super.paint(g);
+        public void paint(Graphics g) {
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagenes/calculador.png"));
+            g.drawImage(imagen.getImage(), 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
         }
+    }
 }
-}
-
-
