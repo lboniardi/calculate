@@ -122,7 +122,7 @@ public class Home extends javax.swing.JFrame {
         controlador.iniciar();
         registrarse.setVisible(true);
         this.setVisible(false);
-
+        System.out.print("aca");
     }//GEN-LAST:event_btnregistrarseActionPerformed
 
     private void btnregistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnregistrarseMouseEntered

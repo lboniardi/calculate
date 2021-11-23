@@ -7,9 +7,13 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import controlador.UsuarioControlador;
 import java.awt.event.ActionEvent;
+import modelo.Consultas;
+import modelo.Usuario;
 import static sun.jvm.hotspot.HelloWorld.e;
 
 public class Singin extends javax.swing.JFrame {
+
+    private UsuarioControlador controlador;
 
    // private controlador UsuarioControlador;
 
@@ -108,6 +112,11 @@ public class Singin extends javax.swing.JFrame {
         });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -115,6 +124,12 @@ public class Singin extends javax.swing.JFrame {
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
+            }
+        });
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -218,9 +233,10 @@ public class Singin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClaveActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+        System.out.println("paso x aca login");
         IngresoGastos home = new IngresoGastos();
-       //home.setVisible(true);
-        //this.setVisible(false);
+        home.setVisible(true);
+        this.setVisible(false);
        
 
     }//GEN-LAST:event_btnRegistrarseActionPerformed
@@ -245,7 +261,22 @@ public class Singin extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         System.out.print("click !");
+        Usuario modelo = new Usuario();
+        Consultas modeloConsultas = new Consultas();
+        Singin registrarse = new Singin();
+        controlador = new UsuarioControlador(modelo, modeloConsultas, registrarse);
+        controlador.iniciar();
+
+        System.out.print("aca");
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        System.out.print("click !");
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       //aca usa el controlador iniciado en buscar
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuscar;
