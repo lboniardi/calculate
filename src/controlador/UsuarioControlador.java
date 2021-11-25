@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import modelo.Consultas;
 import modelo.Usuario;
@@ -59,7 +60,7 @@ public class UsuarioControlador implements ActionListener {
         
         if (e.getSource() == registrarse.btnBuscar) {
             
-            modelo.setNombre(registrarse.txtId.getText());
+            modelo.setId(parseInt(registrarse.txtId.getText()));
             if (modeloConsultas.buscar(modelo)) {
                 
                 registrarse.txtNombre.setText(modelo.getNombre());

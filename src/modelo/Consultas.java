@@ -10,12 +10,12 @@ public class Consultas extends Conexion {
     public boolean buscar(Usuario usuario) {
         PreparedStatement ps = null;
         Connection con = getConection();
-        String sql = "SELECT * FROM `usuarios` WHERE `nombre`=? ";
+        String sql = "SELECT * FROM `usuarios` WHERE `idUsuario`=? ";
         ResultSet rs=null;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, usuario.getNombre());
+            ps.setInt(1, usuario.getId());
             rs=ps.executeQuery();
             if(rs.next()){
                 usuario.setId(Integer.parseInt(rs.getString("idUsuario")));
