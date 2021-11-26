@@ -36,20 +36,22 @@ public class UsuarioControlador implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == registrarse.btnRegistrarse) {
-            modelo.setNombre(registrarse.txtNombre.getText());
-            modelo.setApellido(registrarse.txtApellido.getText());
-            modelo.setUsuario(registrarse.txtUsuario.getText());
-            modelo.setContraseña(registrarse.txtClave.getText());
-            System.out.print("modelo !" + modelo);
-            if (modeloConsultas.registrarse(modelo)) {
-                JOptionPane.showMessageDialog(null, "Registro guardado");
-                limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al guardar");
-                limpiar();
+            if (e.getSource() == registrarse.btnRegistrarse) {
+                modelo.setNombre(registrarse.txtNombre.getText());
+                modelo.setApellido(registrarse.txtApellido.getText());
+                modelo.setUsuario(registrarse.txtUsuario.getText());
+                modelo.setContraseña(registrarse.txtClave.getText());
+                
+                if (modelo.getNombre().isEmpty() || modelo.getApellido().isEmpty() || modelo.getUsuario().isEmpty() || modelo.getContraseña().isEmpty() ) {
+                    JOptionPane.showMessageDialog(null, "Debes completar todos los campos");
+                } else if (modeloConsultas.registrarse(modelo)) {
+                    JOptionPane.showMessageDialog(null, "Usuario Registrado");
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al registrar");
+                    limpiar();
+                }
             }
-        }  
 
         //aca van todos los if/else de cada boton que ejecutan las consultas
         
@@ -68,10 +70,10 @@ public class UsuarioControlador implements ActionListener {
                 registrarse.txtUsuario.setText(modelo.getUsuario());
                 registrarse.txtClave.setText(modelo.getContraseña());
                 
-                JOptionPane.showMessageDialog(null, "ok");
+                JOptionPane.showMessageDialog(null, "Usuario encontrado");
                 
             } else {
-                JOptionPane.showMessageDialog(null, "No se Encuentran registros con esos datos");
+                JOptionPane.showMessageDialog(null, "No se encuentran registros con los datos ingresados");
                 limpiar();
             }
         }  
@@ -85,16 +87,25 @@ public class UsuarioControlador implements ActionListener {
             modelo.setContraseña(registrarse.txtClave.getText());
                     
             if (modeloConsultas.editar(modelo)) {    
-                JOptionPane.showMessageDialog(null, "ok Editados");
+                JOptionPane.showMessageDialog(null, "Usuario editado");
                 limpiar();
                 
             } else {
-                JOptionPane.showMessageDialog(null, "No se Encuentran registros con esos datos");
+                JOptionPane.showMessageDialog(null, "No se encuentran registros con los datos ingresados");
                 limpiar();
             }
         } 
         
-        
+        if (e.getSource() == registrarse.btnEliminar) {
+            modelo.setId(parseInt(registrarse.txtId.getText()));
+            if (modeloConsultas.eliminar(modelo)){
+                JOptionPane.showMessageDialog(null, "Usuario Borrado");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encuentran registros con los datos ingresados");
+                limpiar();
+            }
+        }
     }
 
     public void limpiar() {

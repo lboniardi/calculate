@@ -145,14 +145,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_valueUserActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        System.out.println("paso x aca login");
         if(valueUser.getText().isEmpty() || valuePassword.getText().isEmpty()){
-          msgError.setText("Debes completar los dos campos");
+          msgError.setText("Debes completar ambos campos");
           msgError.setForeground(Color.red);
           return;
        }    
-        
-        IngresoGastos home = new IngresoGastos();
+       IngresoGastos home = new IngresoGastos();
        home.setVisible(true);
        this.setVisible(false);
        // aca hay que validar y hacer la devolucion del usuario y password correcta

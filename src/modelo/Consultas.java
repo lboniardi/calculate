@@ -25,10 +25,9 @@ public class Consultas extends Conexion {
                 usuario.setContraseña(rs.getString("contraseña"));
                 return true;
             }
-            System.out.print("aqui" + sql);
+            System.out.print("SQL: " + sql);
             return false;
         } catch (SQLException e) {
-
             System.err.println(e);
             return false;
         } finally {
@@ -86,7 +85,7 @@ public class Consultas extends Conexion {
             ps.setString(3, usuario.getUsuario());
             ps.setString(4, usuario.getContraseña());
             ps.execute();
-            System.out.print("aqui" + sql);
+            System.out.print("SQL: " + sql);
             return true;
 
         } catch (SQLException e) {
@@ -103,6 +102,34 @@ public class Consultas extends Conexion {
         }
 
     }
+    
+    public boolean eliminar(Usuario usuario) {
+        PreparedStatement ps = null;
+        Connection con = getConection();
+        String sql = "DELETE FROM usuarios WHERE idusuario=?";
+                
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, usuario.getId());
+            ps.execute();
+            System.out.print("SQL: " + sql);
+            return true;
+
+        } catch (SQLException e) {
+
+            System.err.println(e);
+            return false;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+
+        }
+
+    }
+    
 
     
    

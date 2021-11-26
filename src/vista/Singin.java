@@ -9,7 +9,7 @@ import controlador.UsuarioControlador;
 import java.awt.event.ActionEvent;
 import modelo.Consultas;
 import modelo.Usuario;
-import static sun.jvm.hotspot.HelloWorld.e;
+//import static sun.jvm.hotspot.HelloWorld.e;
 
 public class Singin extends javax.swing.JFrame {
 
@@ -233,10 +233,9 @@ public class Singin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClaveActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        System.out.println("paso x aca login");
-        IngresoGastos home = new IngresoGastos();
-        home.setVisible(true);
-        this.setVisible(false);
+       // IngresoGastos home = new IngresoGastos();
+       // home.setVisible(true);
+       // this.setVisible(false);
        
 
     }//GEN-LAST:event_btnRegistrarseActionPerformed
@@ -260,18 +259,15 @@ public class Singin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        System.out.print("click !");
         Usuario modelo = new Usuario();
         Consultas modeloConsultas = new Consultas();
         Singin registrarse = new Singin();
         controlador = new UsuarioControlador(modelo, modeloConsultas, registrarse);
         controlador.iniciar();
-
-        System.out.print("aca");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        System.out.print("click !");
+
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

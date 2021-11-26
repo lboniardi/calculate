@@ -19,12 +19,9 @@ public class Conexion {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println(URL);
-            System.out.println(USERNAME);
-            System.out.println(PASSWORD);
             con = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("con: " + con);
-            System.out.println("Conexión exitosa");
+            //System.out.println("con: " + con);
+            System.out.println("Conexión exitosa a BBDD");
         } catch (Exception e) {
             System.out.println(e);
         }
