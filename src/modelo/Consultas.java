@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class Consultas extends Conexion {
     
     public boolean buscar(Usuario usuario) {
@@ -129,9 +130,37 @@ public class Consultas extends Conexion {
         }
 
     }
-    
+
+    public boolean Login(Usuario usuario) throws ClassNotFoundException {
+        System.out.print("metodo valida usuario");
+        Connection con = getConection();
+        Usuario usu = new Usuario();
+        String sql = "SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario.getUsuario());
+            ps.setString(2, usuario.getContraseña());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                usu.setId(rs.getInt("idusuario"));
+                usu.setUsuario(rs.getString("usuario"));
+                usu.setContraseña(rs.getString("contraseña"));
+            }
+            if(usu.getUsuario() == null){
+                return false;
+            }else{
+                return true;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+}
+
 
     
    
 
-}
+

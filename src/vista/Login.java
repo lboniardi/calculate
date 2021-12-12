@@ -1,8 +1,12 @@
 package vista;
 
+import controlador.UsuarioControlador;
 import java.awt.Color;
 
 public class Login extends javax.swing.JFrame {
+    
+    private UsuarioControlador controlador;
+
 
     public Login() {
         initComponents();
@@ -16,8 +20,8 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        valueUser = new javax.swing.JTextField();
-        valuePassword = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         msgError = new javax.swing.JTextField();
@@ -28,20 +32,20 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        valueUser.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                valueUserMousePressed(evt);
+                txtUsuarioMousePressed(evt);
             }
         });
-        valueUser.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valueUserActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
 
-        valuePassword.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valuePasswordActionPerformed(evt);
+                txtPasswordActionPerformed(evt);
             }
         });
 
@@ -91,16 +95,11 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(valueUser, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(valuePassword))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(txtPassword))
                 .addGap(147, 147, 147))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(msgError, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -109,7 +108,12 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnLogin)
+                            .addComponent(btnVolver))))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,11 +127,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(msgError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valueUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valuePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(38, 38, 38)
                 .addComponent(btnLogin)
@@ -139,20 +143,20 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void valueUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueUserActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_valueUserActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if(valueUser.getText().isEmpty() || valuePassword.getText().isEmpty()){
-          msgError.setText("Debes completar ambos campos");
-          msgError.setForeground(Color.red);
-          return;
-       }    
-       IngresoGastos home = new IngresoGastos();
-       home.setVisible(true);
-       this.setVisible(false);
+//        if(txtUsuario.getText().isEmpty() || txtPassword.getText().isEmpty()){
+//          msgError.setText("Debes completar ambos campos");
+//          msgError.setForeground(Color.red);
+//          return;
+//       }    
+//       IngresoGastos home = new IngresoGastos();
+//       home.setVisible(true);
+//       this.setVisible(false);
        // aca hay que validar y hacer la devolucion del usuario y password correcta
        
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -163,27 +167,27 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void valuePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valuePasswordActionPerformed
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
 
-    }//GEN-LAST:event_valuePasswordActionPerformed
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void valueUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_valueUserMousePressed
+    private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
 
-    }//GEN-LAST:event_valueUserMousePressed
+    }//GEN-LAST:event_txtUsuarioMousePressed
 
     private void msgErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msgErrorActionPerformed
 
     }//GEN-LAST:event_msgErrorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
+    public javax.swing.JButton btnLogin;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField msgError;
-    private javax.swing.JTextField valuePassword;
-    private javax.swing.JTextField valueUser;
+    public javax.swing.JTextField txtPassword;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

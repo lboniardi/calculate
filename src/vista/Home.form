@@ -34,7 +34,7 @@
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="btnregistrarse" min="-2" pref="141" max="-2" attributes="0"/>
               <EmptySpace pref="41" max="32767" attributes="0"/>
-              <Component id="btnLogin" min="-2" pref="106" max="-2" attributes="0"/>
+              <Component id="btnLoginHome" min="-2" pref="106" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -44,7 +44,7 @@
           <Group type="102" attributes="0">
               <EmptySpace pref="340" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLoginHome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnregistrarse" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -53,7 +53,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnLogin">
+    <Component class="javax.swing.JButton" name="btnLoginHome">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="99" type="rgb"/>
@@ -64,9 +64,9 @@
         <Property name="text" type="java.lang.String" value="LOGIN"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLoginMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLoginMouseExited"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLoginHomeMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLoginHomeMouseExited"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginHomeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnregistrarse">

@@ -10,10 +10,10 @@ import vista.Singin;
 
 public class UsuarioControlador implements ActionListener {
 
-    private Usuario modelo;
-    
+    private Usuario modelo;    
     private Consultas modeloConsultas;
     private Singin registrarse;
+
 
     public UsuarioControlador(Usuario modelo, Consultas modeloConsultas, Singin registrarse) {
         this.modelo = modelo;
@@ -24,12 +24,13 @@ public class UsuarioControlador implements ActionListener {
         this.registrarse.btnEliminar.addActionListener(this);
         this.registrarse.btnLimpiar.addActionListener(this);
         this.registrarse.btnBuscar.addActionListener(this);
+
     }
 
     public void iniciar() {
         registrarse.setTitle("Usuarios");
         registrarse.setLocationRelativeTo(null);
-        //registrarse.txtId.setVisible(false);
+  
 
     }
 
@@ -107,7 +108,6 @@ public class UsuarioControlador implements ActionListener {
             }
         }
     }
-
     public void limpiar() {
         registrarse.txtId.setText(null);
         registrarse.txtNombre.setText(null);

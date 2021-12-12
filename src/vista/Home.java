@@ -1,11 +1,9 @@
 package vista;
 
+import controlador.LoginControlador;
 import controlador.UsuarioControlador;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.net.URL;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import modelo.Consultas;
@@ -17,8 +15,7 @@ public class Home extends javax.swing.JFrame {
         this.setContentPane(new ImagenFondo());
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("Calculate (beta)");
-    }
+        this.setTitle("Calculate (beta)");    }
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -32,27 +29,27 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnLogin = new javax.swing.JButton();
+        btnLoginHome = new javax.swing.JButton();
         btnregistrarse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setIconImages(null);
 
-        btnLogin.setBackground(new java.awt.Color(153, 51, 255));
-        btnLogin.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        btnLogin.setText("LOGIN");
-        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLoginHome.setBackground(new java.awt.Color(153, 51, 255));
+        btnLoginHome.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        btnLoginHome.setText("LOGIN");
+        btnLoginHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnLoginMouseEntered(evt);
+                btnLoginHomeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnLoginMouseExited(evt);
+                btnLoginHomeMouseExited(evt);
             }
         });
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                btnLoginHomeActionPerformed(evt);
             }
         });
 
@@ -81,7 +78,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(btnregistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLoginHome, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
@@ -89,7 +86,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(340, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
+                    .addComponent(btnLoginHome)
                     .addComponent(btnregistrarse))
                 .addGap(35, 35, 35))
         );
@@ -107,12 +104,18 @@ public class Home extends javax.swing.JFrame {
     }   
      */
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+    private void btnLoginHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginHomeActionPerformed
 
-        Login login = new Login();
-        login.setVisible(true);
+        Login loguearse = new Login();
+        Usuario modelo = new Usuario();
+        Consultas modeloConsultas = new Consultas();
+        IngresoGastos ingreso = new IngresoGastos();
+        LoginControlador controlador = new LoginControlador(modelo, modeloConsultas,loguearse, ingreso);
+        controlador.iniciar();
+       
+        loguearse.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }//GEN-LAST:event_btnLoginHomeActionPerformed
 
     private void btnregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarseActionPerformed
         Usuario modelo = new Usuario();
@@ -132,16 +135,16 @@ public class Home extends javax.swing.JFrame {
         btnregistrarse.setBackground(new java.awt.Color(153, 51, 255));
     }//GEN-LAST:event_btnregistrarseMouseExited
 
-    private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
-        btnLogin.setBackground(Color.green);
-    }//GEN-LAST:event_btnLoginMouseEntered
+    private void btnLoginHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginHomeMouseEntered
+        btnLoginHome.setBackground(Color.green);
+    }//GEN-LAST:event_btnLoginHomeMouseEntered
 
-    private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
-        btnLogin.setBackground(new java.awt.Color(153, 51, 255));
-    }//GEN-LAST:event_btnLoginMouseExited
+    private void btnLoginHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginHomeMouseExited
+        btnLoginHome.setBackground(new java.awt.Color(153, 51, 255));
+    }//GEN-LAST:event_btnLoginHomeMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLoginHome;
     private javax.swing.JButton btnregistrarse;
     // End of variables declaration//GEN-END:variables
 

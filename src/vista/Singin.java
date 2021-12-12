@@ -9,6 +9,7 @@ import controlador.UsuarioControlador;
 import java.awt.event.ActionEvent;
 import modelo.Consultas;
 import modelo.Usuario;
+import vista.Login;
 //import static sun.jvm.hotspot.HelloWorld.e;
 
 public class Singin extends javax.swing.JFrame {
@@ -262,6 +263,7 @@ public class Singin extends javax.swing.JFrame {
         Usuario modelo = new Usuario();
         Consultas modeloConsultas = new Consultas();
         Singin registrarse = new Singin();
+        Login login = new Login();
         controlador = new UsuarioControlador(modelo, modeloConsultas, registrarse);
         controlador.iniciar();
     }//GEN-LAST:event_btnBuscarActionPerformed
