@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2021 at 08:18 PM
+-- Generation Time: Dec 12, 2021 at 01:58 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -87,6 +87,24 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`idusuario`, `nombre`, `apellido`, `usuario`, `contraseña`) VALUES
+(2, 'leonor', 'pere', 'leoperez', '1234'),
+(8, 'Julieta', 'Perez', 'juliet', '12345'),
+(9, 'Nicolas', 'Petrecca', 'NicoP', '12345'),
+(10, 'lolol', 'lalala', 'lalalal|', '2345'),
+(11, 'leonor', 'lopez', 'leolopez', '1234'),
+(12, 'juan ', 'perez', 'juanperez', '1234'),
+(14, 'leonzia', 'perez', 'leonzia8', '12345'),
+(15, 'diego', 'maradona', 'diez', '1234'),
+(16, 'juan', 'perez', 'juperez', '1234'),
+(18, 'conde', 'dracula', 'vampire', '1234'),
+(21, 'laura', 'lopez', 'arluapoze', '1234'),
+(22, 'oli', 'perez', 'oliver1', '1234');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -158,7 +176,7 @@ ALTER TABLE `rubros`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
@@ -168,25 +186,20 @@ ALTER TABLE `usuarios`
 -- Constraints for table `gastos`
 --
 ALTER TABLE `gastos`
-  ADD CONSTRAINT `gastos_ibfk_1` FOREIGN KEY (`id_nombre_gasto`) REFERENCES `nombregasto` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `gastos_ibfk_1` FOREIGN KEY (`id_nombre_gasto`) REFERENCES `nombregasto` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `gastos_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `ingresos`
 --
 ALTER TABLE `ingresos`
-  ADD CONSTRAINT `ingresos_ibfk_1` FOREIGN KEY (`usuario_ingreso`) REFERENCES `usuarios` (`idusuario`) ON DELETE CASCADE;
+  ADD CONSTRAINT `ingresos_ibfk_1` FOREIGN KEY (`usuario_ingreso`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `rubros`
 --
 ALTER TABLE `rubros`
   ADD CONSTRAINT `rubros_ibfk_1` FOREIGN KEY (`idrubro`) REFERENCES `gastos` (`id_nombre_rubro`) ON DELETE CASCADE;
-
---
--- Constraints for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `gastos` (`id_usuario`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
